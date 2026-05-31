@@ -60,7 +60,7 @@ export default function DbBrowser({ db, refreshKey = 0 }: { db: Db | null; refre
 
       {tableData && (
         <Box sx={{ p: 2 }}>
-          <Stack direction="row" spacing={1} mb={1.5} flexWrap="wrap" useFlexGap>
+          <Stack direction="row" spacing={1} useFlexGap sx={{ mb: 1.5, flexWrap: 'wrap' }}>
             {tableData.schema.map((col) => (
               <Chip
                 key={String(col[1])}

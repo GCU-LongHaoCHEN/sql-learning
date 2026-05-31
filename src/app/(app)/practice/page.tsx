@@ -104,7 +104,7 @@ export default function PracticePage() {
     <Container maxWidth="lg" sx={{ py: 4 }}>
       <Typography variant="h4" gutterBottom>SQL 练习</Typography>
 
-      <Stack direction="row" spacing={1} mb={2}>
+      <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
         {problems.map((p, i) => (
           <Chip
             key={i}
@@ -116,7 +116,7 @@ export default function PracticePage() {
       </Stack>
 
       <Paper sx={{ p: 3, mb: 2 }}>
-        <Stack direction="row" alignItems="flex-start" justifyContent="space-between" spacing={2}>
+        <Stack direction="row" spacing={2} sx={{ alignItems: 'flex-start', justifyContent: 'space-between' }}>
           <Box sx={{ flex: 1 }}>
             <Typography variant="h6">{problem.title}</Typography>
             <Typography color="text.secondary">{problem.desc}</Typography>
@@ -160,7 +160,7 @@ export default function PracticePage() {
       </Box>
 
       <Paper sx={{ p: 2, mb: 2 }}>
-        <Stack direction="row" alignItems="center" justifyContent="space-between" mb={1}>
+        <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', mb: 1 }}>
           <Typography variant="subtitle2">SQL 编辑器</Typography>
           <Stack direction="row" spacing={1}>
             <Button size="small" startIcon={<RestartAltIcon />} onClick={resetDb}>重置数据库</Button>
