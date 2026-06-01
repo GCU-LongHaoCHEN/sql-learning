@@ -1,11 +1,14 @@
 'use client';
-import { Drawer, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Divider, Toolbar } from '@mui/material';
+import { Drawer, List, ListItem, ListItemButton, ListItemText, ListItemIcon, Divider, Box, Typography } from '@mui/material';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import SchoolIcon from '@mui/icons-material/School';
+import StorageIcon from '@mui/icons-material/Storage';
+import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { chapters } from '@/lib/chapters';
 
 const drawerWidth = 240;
+export const SIDENAV_HEADER_HEIGHT = 56;
 
 export default function SideNav() {
   const router = useRouter();
@@ -21,15 +24,41 @@ export default function SideNav() {
       sx={{
         width: drawerWidth,
         flexShrink: 0,
-        '& .MuiDrawer-paper': { width: drawerWidth, boxSizing: 'border-box', top: 64 },
+        '& .MuiDrawer-paper': {
+          width: drawerWidth,
+          boxSizing: 'border-box',
+          top: 0,
+          height: '100vh',
+          borderRight: '1px solid',
+          borderColor: 'divider',
+        },
       }}
     >
-      <Toolbar sx={{ minHeight: '0 !important' }} />
-      <List>
+      {/* 顶部品牌区（蓝色背景，原本顶栏的位置） */}
+      <Box
+        component={Link}
+        href="/"
+        sx={{
+          height: SIDENAV_HEADER_HEIGHT,
+          bgcolor: 'primary.main',
+          color: 'primary.contrastText',
+          display: 'flex',
+          alignItems: 'center',
+          px: 2,
+          textDecoration: 'none',
+          gap: 1,
+        }}
+      >
+        <StorageIcon sx={{ fontSize: 22 }} />
+        <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+          SQL 学习站
+        </Typography>
+      </Box>
+
+      <List sx={{ pt: 1 }}>
         <ListItemButton
           selected={isPractice}
           onClick={() => router.push('/practice')}
-          sx={{ bgcolor: isPractice ? undefined : 'action.hover' }}
         >
           <ListItemIcon sx={{ minWidth: 36 }}><TerminalIcon color="secondary" /></ListItemIcon>
           <ListItemText primary="练习" primaryTypographyProps={{ fontWeight: 600 }} />

@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import ThemeRegistry from '@/components/ThemeRegistry';
-import NavBar from '@/components/NavBar';
 
 export const metadata: Metadata = {
   title: 'SQL 学习站',
@@ -16,7 +15,6 @@ export default function RootLayout({
     <html lang="zh-CN">
       <body style={{ margin: 0 }}>
         <ThemeRegistry>
-          <NavBar />
           {children}
         </ThemeRegistry>
       </body>
