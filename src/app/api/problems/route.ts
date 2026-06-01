@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import { sql } from '@/lib/db';
+import { getSql } from '@/lib/db';
 
 // GET /api/problems  -> 返回所有题目
 export async function GET() {
   try {
+    const sql = getSql();
     const rows = await sql`
       SELECT id, title, description, hint, answer, difficulty, category, sort_order
       FROM problems
