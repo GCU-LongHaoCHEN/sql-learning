@@ -149,8 +149,9 @@ export default function PracticePage() {
       return;
     }
 
-    // 3. 比对
-    const report = diffResults(userRes, expectedRes);
+    // 3. 比对（如果参考答案有 ORDER BY，启用顺序敏感模式）
+    const orderMatters = /\bORDER\s+BY\b/i.test(problem.answer);
+    const report = diffResults(userRes, expectedRes, { orderMatters });
     setUserResult(userRes);
     setExpectedResult(expectedRes);
     setVerdict(report);
